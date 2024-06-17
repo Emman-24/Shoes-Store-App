@@ -12,4 +12,5 @@
     <string name="next">Next</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fill_out_the_form_to_add_a_new_shoe_to_your_collection">Fill out the form to add a new shoe to your collection.</string>
 </resources>
