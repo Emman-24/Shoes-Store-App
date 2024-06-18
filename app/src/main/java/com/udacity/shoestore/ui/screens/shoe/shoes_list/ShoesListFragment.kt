@@ -1,17 +1,13 @@
 package com.udacity.shoestore.ui.screens.shoe.shoes_list
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.EmptyListBinding
 import com.udacity.shoestore.databinding.ShoeBinding
@@ -21,7 +17,8 @@ import com.udacity.shoestore.ui.screens.shoe.ShoeViewModel
 class ShoesListFragment : Fragment() {
 
     private lateinit var binding: ShoesListFragmentBinding
-    private lateinit var viewModel: ShoeViewModel
+
+    private val sharedViewModel: ShoeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,10 +31,8 @@ class ShoesListFragment : Fragment() {
             false
         )
 
-        viewModel = ViewModelProvider(this)[ShoeViewModel::class.java]
 
-        viewModel.shoeMenu.observe(viewLifecycleOwner) { shoeList ->
-            binding.listLayout.removeAllViews()
+        sharedViewModel.shoeMenu.observe(viewLifecycleOwner) { shoeList ->
             if (shoeList.isEmpty()) {
                 val newView: EmptyListBinding = DataBindingUtil.inflate(
                     inflater,
@@ -46,6 +41,7 @@ class ShoesListFragment : Fragment() {
                     false
                 )
                 binding.listLayout.addView(newView.root)
+
             } else {
                 shoeList.forEach { shoe ->
                     val newView: ShoeBinding = DataBindingUtil.inflate(
@@ -61,9 +57,7 @@ class ShoesListFragment : Fragment() {
                     newView.imageView.setImageResource(shoe.image)
                     binding.listLayout.addView(newView.root)
                 }
-
             }
-
         }
 
 

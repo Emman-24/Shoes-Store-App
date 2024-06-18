@@ -24,4 +24,6 @@
     <string name="shoe_name">Shoe Name</string>
     <string name="image">Image</string>
     <string name="shoe_size">Shoe Size</string>
+    <string name="shoe_image">Shoe Image</string>
+    <string name="add_shoe_button">Add Shoe Button</string>
 </resources>

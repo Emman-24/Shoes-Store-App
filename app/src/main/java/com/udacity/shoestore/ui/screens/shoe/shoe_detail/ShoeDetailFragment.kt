@@ -6,17 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.ShoeDetailFragmentBinding
+import com.udacity.shoestore.ui.models.Shoe
 import com.udacity.shoestore.ui.screens.shoe.ShoeViewModel
 
 
 class ShoeDetailFragment : Fragment() {
     private lateinit var binding: ShoeDetailFragmentBinding
 
-    private lateinit var viewModel: ShoeViewModel
+    private val sharedViewModel: ShoeViewModel by activityViewModels()
+
+    var emptyShoe = Shoe("", 0.0, "", "", R.drawable.ic_launcher_foreground)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,14 +33,31 @@ class ShoeDetailFragment : Fragment() {
             false
         )
 
+        sharedViewModel.shoeData.observe(viewLifecycleOwner) { shoe ->
+            shoe.apply {
+                name = binding.editTextShoeName.text.toString()
+            }
+            sharedViewModel.addShoe(shoe)
+        }
 
         binding.btnSave.setOnClickListener {
+            sharedViewModel.emptyShoe.apply {
+                binding.editTextShoeName.text.toString()
+                binding.editTextCompany.text.toString()
+                binding.editTextDescription.text.toString()
+                try {
+                    binding.editTextShoeSize.text.toString().toDouble()
+                } catch (e: NumberFormatException) {
+                    val size = 0.0
+                }
+            }
+            sharedViewModel.addShoe(emptyShoe)
+            findNavController().navigate(R.id.action_shoeDetail_to_shoesList)
         }
 
         binding.btnCancel.setOnClickListener {
             findNavController().navigate(R.id.action_shoeDetail_to_shoesList)
         }
-
 
         return binding.root
     }
