@@ -10,7 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.ShoeDetailFragmentBinding
-import com.udacity.shoestore.ui.models.Shoe
 import com.udacity.shoestore.ui.screens.shoe.ShoeViewModel
 
 
@@ -18,8 +17,6 @@ class ShoeDetailFragment : Fragment() {
     private lateinit var binding: ShoeDetailFragmentBinding
 
     private val sharedViewModel: ShoeViewModel by activityViewModels()
-
-    var emptyShoe = Shoe("", 0.0, "", "", R.drawable.ic_launcher_foreground)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,13 +30,6 @@ class ShoeDetailFragment : Fragment() {
             false
         )
 
-        sharedViewModel.shoeData.observe(viewLifecycleOwner) { shoe ->
-            shoe.apply {
-                name = binding.editTextShoeName.text.toString()
-            }
-            sharedViewModel.addShoe(shoe)
-        }
-
         binding.btnSave.setOnClickListener {
             sharedViewModel.emptyShoe.apply {
                 binding.editTextShoeName.text.toString()
@@ -51,7 +41,7 @@ class ShoeDetailFragment : Fragment() {
                     val size = 0.0
                 }
             }
-            sharedViewModel.addShoe(emptyShoe)
+            sharedViewModel.addShoe(sharedViewModel.emptyShoe)
             findNavController().navigate(R.id.action_shoeDetail_to_shoesList)
         }
 
