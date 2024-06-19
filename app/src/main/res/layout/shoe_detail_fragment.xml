@@ -5,6 +5,7 @@
     tools:context=".ui.screens.shoe.shoe_detail.ShoeDetailFragment">
 
     <data>
+
         <variable
             name="shoeViewModel"
             type="com.udacity.shoestore.ui.screens.shoe.ShoeViewModel" />
@@ -74,7 +75,9 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="16dp"
+            android:clickable="true"
             android:contentDescription="@string/shoe_image"
+            android:focusable="true"
             app:layout_constraintBottom_toTopOf="@+id/tv_shoe_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,9 +115,9 @@
             android:hint="@string/enter_shoe_name"
             android:inputType="text"
             android:singleLine="true"
-            android:text="@{shoeViewModel.emptyShoe.name}"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="center"
 
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_shoe_name" />
 
@@ -146,7 +149,7 @@
             android:hint="@string/enter_company_name"
             android:inputType="text"
             android:singleLine="true"
-            android:text="@{shoeViewModel.emptyShoe.company}"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_company" />
@@ -178,8 +181,7 @@
             android:hint="@string/enter_shoe_size"
             android:inputType="numberDecimal"
             android:singleLine="true"
-            android:text="@{String.valueOf(shoeViewModel.emptyShoe.size)}"
-            android:textAlignment="viewStart"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_shoe_size">
@@ -215,7 +217,7 @@
             android:inputType="textMultiLine"
             android:maxLines="3"
             android:minLines="2"
-            android:text="@{shoeViewModel.emptyShoe.description}"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDescription" />

@@ -1,7 +1,6 @@
 package com.udacity.shoestore.ui.models
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import android.graphics.drawable.Drawable
 
 
 data class Shoe(
@@ -9,5 +8,5 @@ data class Shoe(
     var size: Double,
     var company: String,
     var description: String,
-    val image: Int
+     var image: Drawable
 )

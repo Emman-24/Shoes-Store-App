@@ -54,7 +54,7 @@ class ShoesListFragment : Fragment() {
                     newView.tvShoeCompany.text = shoe.company
                     newView.tvShoeSize.text = shoe.size.toString()
                     newView.tvDescription.text = shoe.description
-                    newView.imageView.setImageResource(shoe.image)
+                    newView.imageView.setImageDrawable(shoe.image)
                     binding.listLayout.addView(newView.root)
                 }
             }

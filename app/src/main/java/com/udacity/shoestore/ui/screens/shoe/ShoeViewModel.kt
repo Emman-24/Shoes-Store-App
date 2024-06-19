@@ -8,14 +8,9 @@ import com.udacity.shoestore.ui.models.Shoe
 
 class ShoeViewModel : ViewModel() {
 
-
     private val _shoeMenu = MutableLiveData<List<Shoe>>()
     val shoeMenu: LiveData<List<Shoe>> = _shoeMenu
 
-    private val _shoeData = MutableLiveData<Shoe>()
-    var shoeData: LiveData<Shoe> = _shoeData
-
-    val emptyShoe = Shoe("", 0.0, "", "", R.drawable.ic_launcher_foreground)
 
     init {
         _shoeMenu.value = emptyList()
@@ -24,5 +19,18 @@ class ShoeViewModel : ViewModel() {
     fun addShoe(shoe: Shoe) {
         val currentList = _shoeMenu.value ?: emptyList()
         _shoeMenu.value = currentList + shoe
+    }
+
+    private fun shoesImage(): List<Int> {
+        return listOf(
+            R.drawable.nike_air_max,
+            R.drawable.nike_air_maxi,
+            R.drawable.nike_club_max,
+            R.drawable.nike_jordan
+        )
+    }
+
+    fun getRandomShoeImageResource(): Int {
+        return shoesImage().random()
     }
 }

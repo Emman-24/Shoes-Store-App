@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.ShoeDetailFragmentBinding
+import com.udacity.shoestore.ui.models.Shoe
 import com.udacity.shoestore.ui.screens.shoe.ShoeViewModel
 
 
@@ -31,19 +32,26 @@ class ShoeDetailFragment : Fragment() {
         )
 
         binding.btnSave.setOnClickListener {
-            sharedViewModel.emptyShoe.apply {
-                name = binding.editTextShoeName.text.toString()
-                company = binding.editTextCompany.text.toString()
-                description = binding.editTextDescription.text.toString()
-                size = try {
-                    binding.editTextShoeSize.text.toString().toDouble()
-                } catch (e: NumberFormatException) {
-                    0.0
-                }
+            val name = binding.editTextShoeName.text.toString()
+            val company = binding.editTextCompany.text.toString()
+            val description = binding.editTextDescription.text.toString()
+            val image = binding.shoeImage.drawable
+            val size = try {
+                binding.editTextShoeSize.text.toString().toDouble()
+            } catch (e: NumberFormatException) {
+                0.0
             }
-            sharedViewModel.addShoe(sharedViewModel.emptyShoe)
+            val newShoe = Shoe(name, size, company, description, image)
+            sharedViewModel.addShoe(newShoe)
             findNavController().navigate(R.id.action_shoeDetail_to_shoesList)
         }
+
+        binding.shoeImage.setOnClickListener {
+            sharedViewModel.getRandomShoeImageResource().let { imageResource ->
+                binding.shoeImage.setImageResource(imageResource)
+            }
+        }
+
 
         binding.btnCancel.setOnClickListener {
             findNavController().navigate(R.id.action_shoeDetail_to_shoesList)
