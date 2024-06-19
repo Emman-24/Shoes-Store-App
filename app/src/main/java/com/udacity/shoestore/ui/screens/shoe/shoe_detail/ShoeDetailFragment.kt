@@ -32,13 +32,13 @@ class ShoeDetailFragment : Fragment() {
 
         binding.btnSave.setOnClickListener {
             sharedViewModel.emptyShoe.apply {
-                binding.editTextShoeName.text.toString()
-                binding.editTextCompany.text.toString()
-                binding.editTextDescription.text.toString()
-                try {
+                name = binding.editTextShoeName.text.toString()
+                company = binding.editTextCompany.text.toString()
+                description = binding.editTextDescription.text.toString()
+                size = try {
                     binding.editTextShoeSize.text.toString().toDouble()
                 } catch (e: NumberFormatException) {
-                    val size = 0.0
+                    0.0
                 }
             }
             sharedViewModel.addShoe(sharedViewModel.emptyShoe)
