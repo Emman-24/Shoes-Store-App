@@ -9,7 +9,6 @@
     <string name="sign_in">Sign In</string>
     <string name="create_account">Create Account</string>
     <string name="new_user">New user?</string>
-    <string name="next">Next</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fill_out_the_form_to_add_a_new_shoe_to_your_collection">Fill out the form to add a new shoe to your collection.</string>
@@ -19,11 +18,20 @@
     <string name="enter_shoe_description">Enter shoe description</string>
     <string name="cancel">Cancel</string>
     <string name="create_shoe">Create Shoe</string>
-    <string name="description">Description</string>
-    <string name="company">Company</string>
-    <string name="shoe_name">Shoe Name</string>
-    <string name="image">Image</string>
-    <string name="shoe_size">Shoe Size</string>
+    <string name="description">Description:</string>
+    <string name="company">Company:</string>
+    <string name="shoe_name">Shoe Name:</string>
+    <string name="image">Image:</string>
+    <string name="shoe_size">Shoe Size:</string>
     <string name="shoe_image">Shoe Image</string>
-    <string name="add_shoe_button">Add Shoe Button</string>
+    <string name="add_shoe">Add Shoe</string>
+    <string name="welcome_to_shop">Welcome to \n Shop List</string>
+    <string name="start_your_journey_to_add_your_favorite_shoes_to_your_collection">Start your journey to add your favorite shoes to \n Your collection.</string>
+    <string name="you_have_the_power">You Have The Power</string>
+    <string name="next">Next</string>
+    <string name="tap_to_the_add_button">Tap to the Add Button</string>
+    <string name="and_remember">And Remember</string>
+    <string name="list_of_your_favorite_shoes">List of your favorite shoes</string>
+    <string name="get_started">Get Started</string>
+    <string name="no_items_found">No Items Found</string>
 </resources>

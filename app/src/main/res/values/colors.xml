@@ -9,4 +9,5 @@
     <color name="colorGrayBackground">#6A6A6A</color>
     <color name="colorButton">#0D6EFD</color>
     <color name="colorWhite">#FFFFFF</color>"
+    <color name="colorBlueScreen">#147ACA</color>
 </resources>
