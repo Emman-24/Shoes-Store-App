@@ -34,4 +34,5 @@
     <string name="list_of_your_favorite_shoes">List of your favorite shoes</string>
     <string name="get_started">Get Started</string>
     <string name="no_items_found">No Items Found</string>
+    <string name="log_out">Log Out</string>
 </resources>
