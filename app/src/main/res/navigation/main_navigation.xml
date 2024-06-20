@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/shoesListFragment"
         android:name="com.udacity.shoestore.ui.screens.shoe.shoes_list.ShoesListFragment"
-        android:label="shoes_list_fragment"
+        android:label="Favorite Shoes"
         tools:layout="@layout/shoes_list_fragment">
         <action
             android:id="@+id/action_shoesList_to_shoeDetail"
@@ -52,8 +52,8 @@
     <fragment
         android:id="@+id/shoeDetailFragment"
         android:name="com.udacity.shoestore.ui.screens.shoe.shoe_detail.ShoeDetailFragment"
-        android:label="shoe_detail_fragment"
-        tools:layout="@layout/shoe_detail_fragment" >
+        android:label="Create Shoes"
+        tools:layout="@layout/shoe_detail_fragment">
         <action
             android:id="@+id/action_shoeDetail_to_shoesList"
             app:destination="@id/shoesListFragment"
