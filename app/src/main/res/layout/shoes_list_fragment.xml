@@ -5,10 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="shoeViewModel"
             type="com.udacity.shoestore.ui.screens.shoe.ShoeViewModel" />
     </data>
+
+    <!--Using Constraintlayout to efficiently handle the position of the views and make
+     it compatible with all devices-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,10 +24,10 @@
         <ScrollView
             android:layout_width="409dp"
             android:layout_height="657dp"
-            android:contentDescription="@string/list_of_your_favorite_shoes"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
+            android:contentDescription="@string/list_of_your_favorite_shoes"
             app:layout_constraintBottom_toTopOf="@+id/btn_add_shoe"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

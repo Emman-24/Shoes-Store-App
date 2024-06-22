@@ -11,6 +11,9 @@
             type="com.udacity.shoestore.ui.screens.shoe.ShoeViewModel" />
     </data>
 
+    <!-- Here ConstraintLayout is used to arrange the TextViews, EditText views, ImageView, and Buttons in a vertical flow.
+     The constraints define the positions of these elements relative to each other and the parent layout.-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
