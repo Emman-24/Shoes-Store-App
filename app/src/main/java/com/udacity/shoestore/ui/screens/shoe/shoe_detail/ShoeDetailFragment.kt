@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -36,11 +35,8 @@ class ShoeDetailFragment : Fragment() {
 
         sharedViewModel.isShoeAdded.observe(viewLifecycleOwner) { isAdded ->
             if (isAdded) {
-                Toast.makeText(context, "Shoe Added", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_shoeDetail_to_shoesList)
                 sharedViewModel.resetIsShoeAdded()
-            } else {
-                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
             }
         }
 
