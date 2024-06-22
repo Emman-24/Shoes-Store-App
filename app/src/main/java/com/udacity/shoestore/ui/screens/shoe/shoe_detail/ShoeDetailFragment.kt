@@ -4,20 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.ShoeDetailFragmentBinding
-import com.udacity.shoestore.ui.models.Shoe
 import com.udacity.shoestore.ui.screens.shoe.ShoeViewModel
 
 
 class ShoeDetailFragment : Fragment() {
     private lateinit var binding: ShoeDetailFragmentBinding
 
-    private val sharedViewModel: ShoeViewModel by activityViewModels()
+    private lateinit var sharedViewModel: ShoeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,20 +30,18 @@ class ShoeDetailFragment : Fragment() {
             container,
             false
         )
+        sharedViewModel = ViewModelProvider(requireActivity())[ShoeViewModel::class.java]
 
-        binding.btnSave.setOnClickListener {
-            val name = binding.editTextShoeName.text.toString()
-            val company = binding.editTextCompany.text.toString()
-            val description = binding.editTextDescription.text.toString()
-            val image = binding.shoeImage.drawable
-            val size = try {
-                binding.editTextShoeSize.text.toString().toDouble()
-            } catch (e: NumberFormatException) {
-                0.0
+        binding.shoeViewModel = sharedViewModel
+
+        sharedViewModel.isShoeAdded.observe(viewLifecycleOwner) { isAdded ->
+            if (isAdded) {
+                Toast.makeText(context, "Shoe Added", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_shoeDetail_to_shoesList)
+                sharedViewModel.resetIsShoeAdded()
+            } else {
+                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
             }
-            val newShoe = Shoe(name, size, company, description, image)
-            sharedViewModel.addShoe(newShoe)
-            findNavController().navigate(R.id.action_shoeDetail_to_shoesList)
         }
 
         binding.shoeImage.setOnClickListener {

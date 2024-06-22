@@ -43,6 +43,34 @@ class ShoesListFragment : Fragment() {
                 }
             }
         }, viewLifecycleOwner)
+
+        sharedViewModel.shoeMenu.observe(viewLifecycleOwner) { shoeList ->
+            if (shoeList.isEmpty()) {
+                val newView: EmptyListBinding = DataBindingUtil.inflate(
+                    layoutInflater,
+                    R.layout.empty_list,
+                    null,
+                    false
+                )
+                binding.listLayout.addView(newView.root)
+
+            } else {
+                shoeList.forEach { shoe ->
+                    val newView: ShoeBinding = DataBindingUtil.inflate(
+                        layoutInflater,
+                        R.layout.shoe,
+                        null,
+                        false
+                    )
+                    newView.tvShoeName.text = shoe.name
+                    newView.tvShoeCompany.text = shoe.company
+                    newView.tvShoeSize.text = shoe.size.toString()
+                    newView.tvDescription.text = shoe.description
+                    newView.imageView.setImageResource(shoe.image)
+                    binding.listLayout.addView(newView.root)
+                }
+            }
+        }
     }
 
     override fun onCreateView(
@@ -55,35 +83,6 @@ class ShoesListFragment : Fragment() {
             container,
             false
         )
-
-
-        sharedViewModel.shoeMenu.observe(viewLifecycleOwner) { shoeList ->
-            if (shoeList.isEmpty()) {
-                val newView: EmptyListBinding = DataBindingUtil.inflate(
-                    inflater,
-                    R.layout.empty_list,
-                    null,
-                    false
-                )
-                binding.listLayout.addView(newView.root)
-
-            } else {
-                shoeList.forEach { shoe ->
-                    val newView: ShoeBinding = DataBindingUtil.inflate(
-                        inflater,
-                        R.layout.shoe,
-                        null,
-                        false
-                    )
-                    newView.tvShoeName.text = shoe.name
-                    newView.tvShoeCompany.text = shoe.company
-                    newView.tvShoeSize.text = shoe.size.toString()
-                    newView.tvDescription.text = shoe.description
-                    newView.imageView.setImageDrawable(shoe.image)
-                    binding.listLayout.addView(newView.root)
-                }
-            }
-        }
 
         binding.btnAddShoe.setOnClickListener {
             findNavController().navigate(R.id.action_shoesList_to_shoeDetail)

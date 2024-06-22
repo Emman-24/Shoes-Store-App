@@ -1,6 +1,6 @@
 package com.udacity.shoestore.ui.models
 
-import android.graphics.drawable.Drawable
+import androidx.annotation.DrawableRes
 
 
 data class Shoe(
@@ -8,5 +8,5 @@ data class Shoe(
     var size: Double,
     var company: String,
     var description: String,
-     var image: Drawable
+    @DrawableRes var image: Int
 )
